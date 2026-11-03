@@ -47,6 +47,10 @@ def main():
 
     dolar.to_csv(PASTA_REFINED / "dolar_diario.csv", index=False)
 
+    selic = converter_serie(ler_raw("selic_meta"))
+    selic.to_csv(PASTA_REFINED / "selic_diaria.csv", index=False)
+    print(f"selic_diaria: {len(selic)} linhas")
+
     economia = juntar_por_mes(ipca_por_mes(ipca), dolar_medio_por_mes(dolar))
     economia.to_csv(PASTA_REFINED / "economia_mensal.csv", index=False)
 
